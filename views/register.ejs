@@ -1,16 +1,23 @@
 <form method="POST" action="/register">
-    <label for="username">username</label>
-    <input type="text"  name="username" placeholder="username">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text"  name="username" class="form-control" placeholder="username">
+    </div>
     <br />
-    <label for="email">email</label>
-    <input type="email"  name="email" placeholder="email">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email"  name="email" class="form-control" placeholder="email">
+    </div>
     <br />
-    <label for="password">password</label>
-    <input type="password"  name="password" placeholder="password">
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password"  name="password" class="form-control" placeholder="password">
+    </div>
     <br />
-    <label for="Confirmpassword">Confirm password</label>
-    <input type="password"  name="Confirmpassword" placeholder="Confirmpassword">
+    <div class="form-group">
+      <label for="Confirmpassword">Confirm Password</label>
+      <input type="password"  name="Confirmpassword" class="form-control" placeholder="Confirmpassword">
+    </div>
     <br />
-    <input type="submit" value="Submit">
-
+    <input class="btn btn-secondary" type="submit" value="Submit">
   </form>
