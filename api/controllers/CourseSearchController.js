@@ -5,10 +5,11 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 const requestPromise = require('request-promise');
+const jwt = require('jsonwebtoken');
 
 
 module.exports = {
-  Search:function(req, res) {
+  Search:(req, res) => {
     const inputParametres = {
       startLatitude: req.body.startLatitude,
       startLongitude: req.body.startLongitude,
@@ -18,6 +19,10 @@ module.exports = {
       startZipCode: req.body.startZipCode,
       endFullAddress: encodeURI(req.body.endFullAddress)
     };
+    const token = req.headers.authorization.split(' ')[1];
+    if (!(jwt.verify(token, process.env.JWT_KEY))) {
+      return res.status(401).json({token: 'Auth failed'});
+    }
     requestPromise({
       method: 'POST',
       uri: 'https://api.external.thegoodseat.fr/getalloffers',
@@ -38,14 +43,11 @@ module.exports = {
       }
       res.send(FinaleResponse);
       res.end();
-    })
-     .catch(err => {
-       res.status(400).json({error: 'bad request'});
-       console.error(err);
-       res.end();
-     });
+    }).catch(err => {
+      res.end();
+      return res.status(400).json({error: err});
+    });
   },
-
   getPrice:function(req,res) {
     const inputParametres = {
       startLatitude: req.body.startLatitude,
@@ -56,6 +58,10 @@ module.exports = {
       startZipCode: req.body.startZipCode,
       endFullAddress: encodeURI(req.body.endFullAddress)
     };
+    const token = req.headers.authorization.split(' ')[1];
+    if (!(jwt.verify(token, process.env.JWT_KEY))) {
+      return res.status(401).json({token: 'Auth failed'});
+    }
     requestPromise({
       method: 'POST',
       uri: 'https://api.external.thegoodseat.fr/getalloffers',
@@ -77,9 +83,8 @@ module.exports = {
         res.end();
       })
        .catch(err => {
-         res.status(400).json({error: 'bad request'});
-         console.error(err);
          res.end();
+         return res.status(400).json({error: err});
        });
   },
   waitingTimes:function(req,res) {
@@ -92,6 +97,11 @@ module.exports = {
       startZipCode: req.body.startZipCode,
       endFullAddress: encodeURI(req.body.endFullAddress)
     };
+    const token = req.headers.authorization.split(' ')[1];
+
+    if (!(jwt.verify(token, process.env.JWT_KEY))) {
+      return res.status(401).json({token: 'Auth failed'});
+    }
     requestPromise({
       method: 'POST',
       uri: 'https://api.external.thegoodseat.fr/getalloffers',
@@ -112,12 +122,10 @@ module.exports = {
           }
           res.ok(FinaleResponse);
           res.end();
-        })
-         .catch(err => {
-           res.status(400).json({error: 'bad request'});
-           console.error(err);
-           res.end();
-         });
+        }).catch(err => {
+          res.end();
+          return res.status(400).json({error: err});
+        });
   },
 };
 
