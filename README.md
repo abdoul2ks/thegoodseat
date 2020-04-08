@@ -1,5 +1,5 @@
 ## Dependencies
- **open your terminal and clone the repositorie
+ **open your terminal and clone the repositorie <br />
  **after install all dependencies with command "npm install"
 ## Run in local
   **you have to install XamPP or WamPP https://www.apachefriends.org/fr/download.html <br />
@@ -18,4 +18,5 @@
                                               <br />
   **Run xamPP and start MYSQL <br />
   **Open your terminale and type: "nodemon app.js"
+  **Open http://localhost:1337/
 ## START TEST !!
