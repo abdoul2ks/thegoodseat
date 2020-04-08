@@ -19,12 +19,18 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-
+  //FRONTEND
   '/': { view: 'pages/homepage' },
+  '/course/search': { view: 'course' },
+  '/course/price' : { view: 'coursebyprice' },
+  '/course/waitingTimes' : { view: 'coursewaitingtimes' },
+  '/login': {view: 'login'},
+  '/register': {view: 'register'},
+  //BACKEND
   'POST /course/search' : 'CourseSearchController.Search',
   'POST /course/price' : 'CourseSearchController.getPrice',
   'POST /course/waitingTimes' : 'CourseSearchController.waitingTimes',
-  //AUTHENTIFICATION
+  //BACKEND->AUTHENTIFICATION
   'POST /register' : 'UserController.register',
   'POST /login' : 'UserController.Login'
 

@@ -19,7 +19,7 @@ module.exports = {
       startZipCode: req.body.startZipCode,
       endFullAddress: encodeURI(req.body.endFullAddress)
     };
-    const token = req.headers.authorization.split(' ')[1];
+    const token = req.cookies.token;
     if (!(jwt.verify(token, process.env.JWT_KEY))) {
       return res.status(401).json({token: 'Auth failed'});
     }
@@ -58,7 +58,7 @@ module.exports = {
       startZipCode: req.body.startZipCode,
       endFullAddress: encodeURI(req.body.endFullAddress)
     };
-    const token = req.headers.authorization.split(' ')[1];
+    const token = req.cookies.token;
     if (!(jwt.verify(token, process.env.JWT_KEY))) {
       return res.status(401).json({token: 'Auth failed'});
     }
@@ -97,7 +97,7 @@ module.exports = {
       startZipCode: req.body.startZipCode,
       endFullAddress: encodeURI(req.body.endFullAddress)
     };
-    const token = req.headers.authorization.split(' ')[1];
+    const token = req.cookies.token;
 
     if (!(jwt.verify(token, process.env.JWT_KEY))) {
       return res.status(401).json({token: 'Auth failed'});
@@ -118,7 +118,7 @@ module.exports = {
 
           for (i in getPriceOfCourse) {
             var minutes = Math.floor(getPriceOfCourse[i].arrivalTime / 60);
-            FinaleResponse.push({'Waiting Times': minutes });
+            FinaleResponse.push({'Waiting Times': minutes + 'min' });
           }
           res.ok(FinaleResponse);
           res.end();
