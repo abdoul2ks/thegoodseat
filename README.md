@@ -2,25 +2,87 @@
 
 a [Sails v1](https://sailsjs.com) application
 
-
-### Links
-
-+ [Sails framework documentation](https://sailsjs.com/get-started)
-+ [Version notes / upgrading](https://sailsjs.com/documentation/upgrading)
-+ [Deployment tips](https://sailsjs.com/documentation/concepts/deployment)
-+ [Community support options](https://sailsjs.com/support)
-+ [Professional / enterprise options](https://sailsjs.com/enterprise)
-
-
-### Version info
-
-This app was originally generated on Tue Apr 07 2020 13:24:45 GMT+0200 (GMT+02:00) using Sails v1.2.4.
-
-<!-- Internally, Sails used [`sails-generate@1.16.13`](https://github.com/balderdashy/sails-generate/tree/v1.16.13/lib/core-generators/new). -->
-
-
-
-<!--
-Note:  Generators are usually run using the globally-installed `sails` CLI (command-line interface).  This CLI version is _environment-specific_ rather than app-specific, thus over time, as a project's dependencies are upgraded or the project is worked on by different developers on different computers using different versions of Node.js, the Sails dependency in its package.json file may differ from the globally-installed Sails CLI release it was originally generated with.  (Be sure to always check out the relevant [upgrading guides](https://sailsjs.com/upgrading) before upgrading the version of Sails used by your app.  If you're stuck, [get help here](https://sailsjs.com/support).)
--->
-
+## Dependencies
+ **open your terminal and clone the repositorie
+ **after install all dependencies with command "npm install"
+## Run in local
+  ** you have to install XamPP or WamPP https://www.apachefriends.org/fr/download.html
+  ** you have to install Postman https://www.postman.com/downloads/
+  ** you need to open the project go to config/databases.js and change the port if necessary
+  ** you have to run mysql and type : CREATE DATABASE 'thegoodseat';
+  ** you have to run mysql and put this next command : CREATE TABLE `user` (`user_id` int(11) NOT NULL AUTO_INCREMENT,
+                                                              `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+                                                               `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+                                                               `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+                                                               `Cpassword` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+                                              PRIMARY KEY (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+  **Run xamPP and start MYSQL
+  **Open your terminale and type: "nodemon app.js"
+#START TEST
+   #AUTHENTIFICATION /register
+    **Run postman and choose on METHOD: "POST"
+                                URL REQUEST : "http://localhost:1337/register"
+                                body: "Raw"
+                                type: "JSON"
+    ** inside text part you have to enter for example :
+                                              {
+                                              "username": "test",
+                                              "email": "test@gmail.Com",
+                                              "password": "tetsss52",
+                                              "Cpassword": "tetsss52"
+                                              }
+   #AUTHENTIFICATION /login
+    **Run postman and choose on METHOD: "POST"
+                                URL REQUEST : "http://localhost:1337/login"
+                                body: "Raw"
+                                type: "JSON"
+    ** inside text part you have to enter for example :
+                                              {
+                                              "username": "test",
+                                              "password": "tetsss52",
+                                              }
+    #RECHERCHE DE COURSE /course/search
+    **Run postman and choose on METHOD: "POST"
+                                URL REQUEST : "http://localhost:1337/course/search"
+                                body: "Raw"
+                                type: "JSON"
+    ** inside text part you have to enter for example :
+                                              {
+                                                "startLatitude": 49.443750,
+                                                "startLongitude": 1.097090,
+                                                "endLatitude": 46.672260,
+                                                "endLongitude": -1.430190,
+                                                "startFullAddress": "17 rue des arsins 76000 rouen",
+                                                "startZipCode": "75012",
+                                                "endFullAddress": "18 rue pasteur 85000 la roche sur yon",
+                                               }
+      #RECHERCHE DE COURSE /course/price
+          **Run postman and choose on METHOD: "POST"
+                                      URL REQUEST : "http://localhost:1337/course/price"
+                                      body: "Raw"
+                                      type: "JSON"
+          ** inside text part you have to enter for example :
+                                                    {
+                                                      "startLatitude": 49.443750,
+                                                      "startLongitude": 1.097090,
+                                                      "endLatitude": 46.672260,
+                                                      "endLongitude": -1.430190,
+                                                      "startFullAddress": "17 rue des arsins 76000 rouen",
+                                                      "startZipCode": "75012",
+                                                      "endFullAddress": "18 rue pasteur 85000 la roche sur yon",
+                                                     }
+        #RECHERCHE DE COURSE /course/waitingTimes
+          **Run postman and choose on METHOD: "POST"
+                                      URL REQUEST : "http://localhost:1337/course/waitingTimes"
+                                      body: "Raw"
+                                      type: "JSON"
+          ** inside text part you have to enter for example :
+                                                    {
+                                                      "startLatitude": 49.443750,
+                                                      "startLongitude": 1.097090,
+                                                      "endLatitude": 46.672260,
+                                                      "endLongitude": -1.430190,
+                                                      "startFullAddress": "17 rue des arsins 76000 rouen",
+                                                      "startZipCode": "75012",
+                                                      "endFullAddress": "18 rue pasteur 85000 la roche sur yon",
+                                                     }
